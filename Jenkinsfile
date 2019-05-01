@@ -5,19 +5,28 @@ pipeline {
     stages {
 
         stage('Setup') {
-            echo "Setup Stag"
+            steps {
+                echo "Setup Stag"
+            }
         }
 
         stage('Build') {
-            echo "Build Stag"
+            steps {
+                echo "Build Stag"
+            }
         }
 
         stage('Release') {
-            echo "Release Stag"
+            steps{
+                echo "Release Stag"
+            }
         }
 
         stage('Publication') {
-            echo "Publication Stag"
+            steps{
+                sh 'printenv'
+                echo "Publication Stag"
+            }
         }
     }
 }
