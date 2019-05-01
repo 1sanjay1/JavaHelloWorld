@@ -7,21 +7,16 @@ boolean pr = false
 
 pipeline {
 
-    agent {
-        docker {
-            image 'openjdk:8'
-            label 'docker'
-        }
-    }
+    agent any
 
-    options {
-        // General Jenkins job properties
-        buildDiscarder(logRotator(numToKeepStr: '40'))
-        // Timestamps
-        timestamps()
-        // No durability
-        durabilityHint('PERFORMANCE_OPTIMIZED')
-    }
+    // options {
+    //     // General Jenkins job properties
+    //     buildDiscarder(logRotator(numToKeepStr: '40'))
+    //     // Timestamps
+    //     timestamps()
+    //     // No durability
+    //     durabilityHint('PERFORMANCE_OPTIMIZED')
+    // }
 
     stages {
 
@@ -78,7 +73,8 @@ set -e
             }
             post {
                 always {
-                    junit "**/build/test-results/**/*.xml"
+                    // junit "**/build/test-results/**/*.xml"
+                    echo "post build"
                 }
             }
         }
